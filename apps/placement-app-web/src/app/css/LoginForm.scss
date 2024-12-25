@@ -1,0 +1,57 @@
+// Container styling to center the form in the page
+
+  
+  // Box styling to add spacing and padding around the form
+  .box {
+    padding: 2rem;
+    background-color: #ace2cc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    width: 100%;
+    max-width: 400px;
+ gap: 50rem;
+  }
+  
+  // Grid styling to ensure proper spacing between form elements
+
+  
+  .text-field {
+    width: 100%;
+    color: aliceblue; 
+    outline: wheat;
+    gap: 10rm;
+    & input {
+      color: black; /* Changes text color */
+    }
+  
+    & .MuiInputLabel-root {
+      color: black; /* Changes label color */
+    }
+  
+    & .MuiOutlinedInput-root {
+      fieldset {
+        border-color: black; /* Changes the border color */
+      }
+    }
+  }
+  
+  
+  // Button container styling
+  .button-container {
+    display: flex;
+    gap: 5rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  // Individual Button styling
+  .button {
+    width: 48%;
+  }
+  
+  // Adding a small margin between the email and password fields
+  .text-field + .text-field {
+    margin-top: 1rem;
+  }
+  

@@ -1,11 +1,11 @@
 // Uncomment this line to use CSS modules
 // import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
+import LoginForm from './pages/Login';
 
 export function App() {
   return (
     <div>
-      <NxWelcome title="placement-app-web" />
+      <LoginForm/>
     </div>
   );
 }
