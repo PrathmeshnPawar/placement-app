@@ -13,20 +13,20 @@ const logo = "your-logo-url"; // Replace with your logo URL
 const SignInForm: React.FC = () => {
   const navigate = useNavigate();
   const [role, setRole] = useState<string | null>(null);
-  const [email, setEmail] = useState(''); // Email state
-  const [password, setPassword] = useState(''); // Password state
   const [isSignUp, setIsSignUp] = useState(false); // Track whether user is signing up
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
 
   // Role options
-  const roles = ['student', 'company', 'college'];
+  const roles = ['Student', 'Company', 'College'];
 
   // Handle role selection change
-  const handleChange = (event: unknown, newValue: string | null) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: string | null) => {
     setRole(newValue);
 
     if (newValue) {
       if (isSignUp) {
-        // Redirect to sign-up page based on role
+        // Redirect to the appropriate sign-up page based on role
         navigate(`/${newValue}-sign-up`);
       } else {
         // Redirect to dashboard based on role
@@ -55,10 +55,10 @@ const SignInForm: React.FC = () => {
 
   // Handle Cancel button click
   const handleCancelClick = () => {
-    setEmail(''); // Reset email field
-    setPassword(''); // Reset password field
     setRole(null); // Reset role selection
     setIsSignUp(false); // Reset sign-up mode
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -67,7 +67,7 @@ const SignInForm: React.FC = () => {
         <Paper elevation={10} sx={{ ...paperstyle, textAlign: 'center' }} className="paper-container">
           <Grid container direction="column" alignItems="center" justifyContent="center" sx={{ marginBottom: 2 }}>
             <Avatar src={logo} sx={{ marginBottom: 1 }} />
-            <Typography variant="h5">{isSignUp ? 'Sign Up' : 'Sign In'}</Typography>
+            <Typography variant="h5">{isSignUp ? 'Sign Up' : ' Login'}</Typography>
           </Grid>
 
           {!isSignUp && (
@@ -75,41 +75,45 @@ const SignInForm: React.FC = () => {
               <Grid item>
                 <TextField
                   label="Email"
+                  value={email}
                   fullWidth
                   variant="outlined"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)} 
+                  // Add any additional state and handler if needed
                 />
               </Grid>
               <Grid item>
                 <TextField
                   label="Password"
                   type="password"
+                  value={password}
                   fullWidth
                   variant="outlined"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value)} 
+                  // Add any additional state and handler if needed
                 />
               </Grid>
             </Grid>
           )}
 
           <Grid container direction="row" spacing={2} sx={{ marginBottom: 3 }}>
-            <Grid item xs={6}>
+            <Grid item xs={12}>
               <Autocomplete
                 value={role}
                 size="medium"
                 onChange={handleChange}
+                
                 options={roles}
                 renderInput={(params) => (
                   <TextField
+                  
                     {...params}
                     label={isSignUp ? 'Sign Up Role' : 'Role'}
                     variant="outlined"
                   />
                 )}
                 isOptionEqualToValue={(option, value) => option === value}
-                sx={{ width: '100%' }}
+                // sx={{ width: '100%' }}
               />
             </Grid>
           </Grid>
@@ -117,7 +121,7 @@ const SignInForm: React.FC = () => {
           <Grid container direction="row" justifyContent="center" spacing={2}>
             <Grid item xs={6}>
               <Button
-                variant="outlined"
+                variant="contained"
                 fullWidth
                 size="medium"
                 onClick={handleCancelClick}
@@ -127,7 +131,7 @@ const SignInForm: React.FC = () => {
             </Grid>
             <Grid item xs={6}>
               <Button
-                variant="outlined"
+                variant="contained"
                 fullWidth
                 size="medium"
                 onClick={handleSignUpClick}
@@ -143,3 +147,4 @@ const SignInForm: React.FC = () => {
 };
 
 export default SignInForm;
+
