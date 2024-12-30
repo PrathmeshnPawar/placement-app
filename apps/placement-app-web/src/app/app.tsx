@@ -1,11 +1,9 @@
-// Uncomment this line to use CSS modules
-// import styles from './app.module.scss';
-import LoginForm from './pages/Login';
+import SignInForm from './components/SignIn_SignUp';
 
 export function App() {
   return (
     <div>
-      <LoginForm/>
+      <SignInForm />
     </div>
   );
 }
